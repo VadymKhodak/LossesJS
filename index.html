@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Calculation of projected losses</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">      <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <script type="text/javascript" src="script/jquery-3.3.1.js"></script>
+      <script type="text/javascript" src="script/script.js"></script>
+
+  </head>
+  <body>
+  <!-- HEADER -->
+    <header class="header">
+      <div class="cont">
+          <!-- Title -->
+        <h1 class="title">Calculation of Projected Losses</h1>
+          <!-- INPUT AMOUNT -->
+      </div>
+    </header>
+  <!-- MAIN -->
+   <main>
+   <br>
+    <form action="#" class="count">
+      <div class="amount">
+      <label title="Enter the number of tanks" class="myLabel">Tank :</label><input type="number" id="Tank" min="0">
+      </div>
+      <div class="amount">
+      <label title="Enter the number of IFV" class="myLabel"> IFV  :</label><input type="number" id="IFV" min="0">
+      </div>
+      <div class="amount">
+      <label title="Enter the number of APC" class="myLabel">APC  :</label><input type="number" id="APC" min="0">
+      </div>
+      <div class="amount">
+      <label title="Enter the number of other vehicles" class="myLabel">Other:</label><input type="number" id="Other" min="0">
+      </div>
+    </form>
+    <div class="input">
+    <div class="container">
+    <label title="Form factor application form of force (forces)" class="myLabel">Kf:</label><select id="Kf" name="Kf">
+      <option value="0"></option>
+      <option value="0.12">Air Defense of Ukraine</option>
+      <option value="0.05">Territorial defense of Ukraine</option>
+      <option value="1.00">Defense Operations of the Operative Command (Operational Force Group)</option>
+      <option value="1.35">The operational operation of the operational command (operative-tactical grouping of troops) has been prepared by the positional</option>
+      <option value="1.54">The operational operation of the operational command (operational-tactical grouping of troops) was prepared maneuvering</option>
+      <option value="1.59">The operational operation of the operational command (operational-tactical grouping of troops) hastily occupied</option>
+      <option value="1.2">The counter-offensive operation of the operational command (operative grouping of troops)</option>
+      <option value="1.32">The counter-offensive operation of the operational command (operative-tactical grouping of troops)</option>
+      <option value="1.83">Offensive operation of the operational command (operational-tactical grouping of troops) on prepared position defense</option>
+      <option value="1.96">Offensive operation of the operational command (operational-tactical grouping of troops) on prepared maneuver defense</option>
+      <option value="1.34">Offensive operation of the operational command (operational-tactical grouping of troops) on the hastely occupied defense</option>
+      <option value="0.32">Stabilization operation of the operational command (operative grouping of troops)</option>
+      <option value="0.4">Stabilization operation of the operational command (operational-tactical grouping of troops)</option>
+      <option value="1.86">Air Force Combat (Air Operations)</option>
+      <option value="0.03">The action of the emergency forces on air defense in protecting the airborne illness</option>
+      <option value="1.15">Naval Forces Action</option>
+      <option value="1.90">Special operations (sabotage, reconnaissance, anti-diversion, resistance movement organization, etc.)</option>
+      <option value="2.21">Operation on the withdrawal of troops (forces) from under attack</option>
+      <option value="0.36">Military Counter-Terrorist Operation</option>
+      <option value="1.95">The combat actions of high-ground landing troops (raid, defensive combat, airborne landing, airborne assault, airmobile brigades)</option>
+      <option value="1.89">Military operations of the battalion of the Marine Corps (Brigade) in the Marine Assault</option>
+      <option value="1.45">Military operations of the battalion of the Marine Corps (brigade) during the defense of the seaside (objects, points of departure, ports)</option>
+      <option value="1.51">The battle of a mechanized (tank) brigade on a separate line of positional defense</option>
+      <option value="1.74">The combat mechanized (tank) brigade on a separate direction maneuverable defense</option>
+      <option value="1.68">The combat mechanized (tank) brigade on a separate direction is hastily occupied defense</option>
+      <option value="1.86">Fighting mechanized (tank) brigade in a separate direction of attack on prepared position defense</option>
+      <option value="1.98">Fighting mechanized (tank) brigade on a separate offensive towards prepared maneuver defense</option>
+      <option value="1.72">The battle of a mechanized (tank) brigade in a separate direction of attack on the enemy, who hastily moved to the defense</option>
+      <option value="2.16">The battle of a mechanized (tank) brigade on a separate direction a counter battle</option>
+      <option value="0.49">Fighting mechanized (tank) brigade on a separate direction stabilizing actions</option>
+      <option value="0.04">Guarding forces (forces)</option>
+      <option value="1.01">Stay in reserve</option>
+    </select>
+    </div>
+    <div class="container">
+    <label title="Coefficient of taking into account the role and place of military formation in the operation (combat) (forces)" class="myLabel">Krp:</label><select  id="Krp" name="Krp">
+      <option value="0"></option>
+      <option value="1.00">On the main direction is 1 echelon</option>
+      <option value="0.90">On the main direction is 2 echelons</option>
+      <option value="0.50">On the main direction of the Group of Special Forces, Logistic</option>
+      <option value="0.90">On the other direction is 1 echelon</option>
+      <option value="0.70">In the other direction is 2 echelons</option>
+      <option value="0.40">On the other side of the Group of Special Forces, Logistic</option>
+      <option value="1.20">Parts, support in the lane of supply (lead maneuvering defense)</option>
+      <option value="1.20">Parts, support in the advanced (raid) detachment</option>
+      <option value="0.50">Other elements of operative construction (combat order) search-shock echelon</option>
+      <option value="0.40">Other elements of operational construction (combat order) emergency response level</option>
+      <option value="0.30">Other elements of operational construction (combat order) echelon isolation of the conflict area</option>
+      <option value="0.20">Other elements of operative construction (combat order) echelon of security of objects of communication</option>
+      <option value="0.40">Other elements of operative construction (combat order) mobile echelon</option>
+      <option value="0.30">Other elements of operative construction (combat order) of the support part of the state border cover</option>
+      <option value="0.10">Other elements of operative construction (combat order) Reserve of the SuCurrenteme Commander</option>
+      <option value="0.65">Other elements of operative construction (combat order) PS Aviation Group</option>
+      <option value="0.90">Other elements of operational construction (combat order) Naval naval grouping</option>
+      <option value="0.65">Other elements of operational construction (combat order) Aviation Group Navy (planes)</option>
+      <option value="0.70">Other elements of operative construction (combat order) Aviation Group Navy (helicopters)</option>
+    </select>
+    </div>
+    <div class="container">
+    <label title="Coefficient of taking into account the duration of the operation (fighting)" class="myLabel">Kd:</label><select id="Kd" name="Kd">
+      <option value="0"></option>
+      <option value="1.20">Defense, Stabilization, Antiterrorist Operations For Up To 5 days</option>
+      <option value="1.00">Defense, Stabilization, Counterterrorist Operations 6-15 days</option>
+      <option value="0.80">Defense, Stabilization, Counterterrorist Operations 16-30 days</option>
+      <option value="0.60">Defense, stabilization, anti-terrorist operations 31-180 days</option>
+      <option value="0.30">Defense, stabilization, counterterrorist operations 181 days and more</option>
+      <option value="1.40">Offensive, counterattack operations up to 5 days</option>
+      <option value="1.20">Offensive, counter-offensive operations 6-15 days</option>
+      <option value="1.10">Offensive, offensive operations of 11 days or more</option>
+    </select>
+    </div>
+    <div class="container">
+    <label title="Coefficient of taking into account the level of combat training and coherence of military formations" class="myLabel">Ktr:</label><select id="Ktr" name="Ktr">
+      <option value="00"></option>
+      <option value="1.40">Combat training and reconciliation is not completed</option>
+      <option value="1.20">Combat training and reconciliation conducted under abridged program</option>
+      <option value="1.00">Combat training and reconciliation conducted in full</option>
+      <option value="0.80">Having a combat experience</option>
+    </select>
+    </div>
+    <div class="container">
+    <label title="Coefficient of taking into account the balance of forces and means of the parties in the operation (combat)" class="myLabel">Kb:</label><select id="Kb" name="Kb">
+      <option value="0"></option>
+      <option value="0.12">For the actions of our forces in the defense of 0,5: 1 </option>
+      <option value="0.19">For the actions of our forces in the defense 1: 1</option>
+      <option value="0.38">For the actions of our forces in the defense of 1.5: 1</option>
+      <option value="0.63">For the actions of our forces in the defense 2: 1</option>
+      <option value="0.88">For the actions of our forces in the defense 2,5: 1</option>
+      <option value="1.00">For the actions of our forces in the defense of 3: 1</option>
+      <option value="1.07">For the actions of our forces in the defense of 3,5: 1</option>
+      <option value="1.13">For the actions of our forces in the defense of 4: 1</option>
+      <option value="1.22">For the actions of our forces in the offensive, a counteroffensive of 0.5: 1</option>
+      <option value="1.20">For the actions of our forces in the offensive counter-attack 1: 1</option>
+      <option value="1.17">For the actions of our forces in the offensive counteroffensive 1,5: 1</option>
+      <option value="1.13">For the actions of our forces in the offensive counter-attack 2: 1</option>
+      <option value="1.07">For the actions of our forces in the offensive of the counteroffensive of 2.5: 1</option>
+      <option value="1.00">For the actions of our forces in the offensive/counterattack  3: 1</option>
+      <option value="0.88">For the actions of our forces in the offensive/counterattack of a 3.5: 1</option>
+      <option value="0.63">For the actions of our forces in the offensive/counterattack 4: 1</option>
+    </select>
+    </div>
+    <div class="container">
+    <label title="Coefficient of calculation of the use of high-precision weapons in the operation (combat)" class="myLabel">Khpw:</label><select id="Khpw" name="Khpw">
+      <option value="0"></option>
+      <option value="0.79">The percentage of the use of high-precision weapons is 0%</option>
+      <option value="0.83">The percentage of the use of high-precision weapons is 10%</option>
+      <option value="0.87">The percentage of the use of high-precision weapons is 20%</option>
+      <option value="0.91">The percentage of the use of high-precision weapons is 30%</option>
+      <option value="0.95">The percentage of the use of high-precision weapons is 40%</option>
+      <option value="1.00">The percentage of the use of high-precision weapons is 50%</option>
+      <option value="1.03">The percentage of the use of high-precision weapons is 60%</option>
+      <option value="1.07">The percentage of the use of high-precision weapons is 70%</option>
+      <option value="1.11">The percentage of the use of high-precision weapons is 80%</option>
+      <option value="1.16">The percentage of the use of high-precision weapons is 90%</option>
+      <option value="1.22">The percentage of the use of high-precision weapons is 100%</option>
+    </select>
+    </div>
+    <div class="container">
+    <label title="Coefficient of recruitment of troops (forces)" class="myLabel">Kr:</label><input type="number" id="Kr" name="Kr" min="0.01" max="1" step="0.01">
+    </div>
+    <div class="container">
+    <label title="Duration of operation" class="myLabel">D:</label><input type="number" id="Duration" name="Duration" min="1" max="365">
+    </div>
+    </div>
+    <button id="count" onclick="count(this)" title="Push the button to count">COUNT</button>
+    <table class="table" id="dailyTable">
+      <caption><h2>Estimated Daily Losses</h2></caption>
+      <thead>
+        <tr>
+          <th>Vehicle Type</th>
+          <th>Total</th>
+          <th>Irrecoverable Losses</th>
+          <th>Major Repair</th>
+          <th>Middle Repair</th>
+          <th>Current Repair</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tank</td>
+          <td id="TankDailyTotal"></td>
+          <td id="TankDailyIL"></td>
+          <td id="TankDailyMajor"></td>
+          <td id="TankDailyMiddle"></td>
+          <td id="TankDailyCurrent"></td>
+        </tr>
+        <tr>
+          <td>IFV</td>
+          <td id="IFVDailyTotal"></td>
+          <td id="IFVDailyIL"></td>
+          <td id="IFVDailyMajor"></td>
+          <td id="IFVDailyMiddle"></td>
+          <td id="IFVDailyCurrent"></td>
+        </tr>
+        <tr>
+          <td>APC</td>
+          <td id="APCDailyTotal"></td>
+          <td id="APCDailyIL"></td>
+          <td id="APCDailyMajor"></td>
+          <td id="APCDailyMiddle"></td>
+          <td id="APCDailyCurrent"></td>
+        </tr>
+        <tr>
+          <td>Other</td>
+          <td id="OtherDailyTotal"></td>
+          <td id="OtherDailyIL"></td>
+          <td id="OtherDailyMajor"></td>
+          <td id="OtherDailyMiddle"></td>
+          <td id="OtherDailyCurrent"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td id="TotalDailyTotal"></td>
+          <td id="TotalDailyIL"></td>
+          <td id="TotalDailyMajor"></td>
+          <td id="TotalDailyMiddle"></td>
+          <td id="TotalDailyCurrent"></td>
+        </tr>
+      </tfoot>
+    </table>
+    <table class="table" id="OperationTable">
+      <caption><h2>Expected Losses per Operation</h2></caption>
+      <thead>
+        <tr>
+          <th>Vehicle Type</th>
+          <th>Total</th>
+          <th>Irrecoverable Losses</th>
+          <th>Major Repair</th>
+          <th>Middle Repair</th>
+          <th>Current Repair</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tank</td>
+          <td id="TankOperationTotal"></td>
+          <td id="TankOperationIL"></td>
+          <td id="TankOperationMajor"></td>
+          <td id="TankOperationMiddle"></td>
+          <td id="TankOperationCurrent"></td>
+        </tr>
+        <tr>
+          <td>IFV</td>
+          <td id="IFVOperationTotal"></td>
+          <td id="IFVOperationIL"></td>
+          <td id="IFVOperationMajor"></td>
+          <td id="IFVOperationMiddle"></td>
+          <td id="IFVOperationCurrent"></td>
+        </tr>
+        <tr>
+          <td>APC</td>
+          <td id="APCOperationTotal"></td>
+          <td id="APCOperationIL"></td>
+          <td id="APCOperationMajor"></td>
+          <td id="APCOperationMiddle"></td>
+          <td id="APCOperationCurrent"></td>
+        </tr>
+        <tr>
+          <td>Other</td>
+          <td id="OtherOperationTotal"></td>
+          <td id="OtherOperationIL"></td>
+          <td id="OtherOperationMajor"></td>
+          <td id="OtherOperationMiddle"></td>
+          <td id="OtherOperationCurrent"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total</td>
+          <td id="TotalOperationTotal"></td>
+          <td id="TotalOperationIL"></td>
+          <td id="TotalOperationMajor"></td>
+          <td id="TotalOperationMiddle"></td>
+          <td id="TotalOperationCurrent"></td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </main>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="cont">
+      <p>vaddimart@gmail.com 2018</p>
+    </div>
+  </footer>
+  </body>
+</html>
